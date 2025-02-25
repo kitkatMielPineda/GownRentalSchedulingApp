@@ -134,7 +134,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SignInScreen from './src/screens/SignInScreen'; // Adjust path if needed
-// import CreateAccountScreen from './src/screens/CreateAccountScreen';
+import CreateAccountScreen from './src/screens/CreateAccountScreen';
 
 const Stack = createStackNavigator();
 
@@ -147,7 +147,11 @@ export default function App() {
           component={SignInScreen}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen name="CreateAccount" component={CreateAccountScreen} /> */}
+        <Stack.Screen
+          name="CreateAccount"
+          component={CreateAccountScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

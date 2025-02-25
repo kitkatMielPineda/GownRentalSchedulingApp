@@ -78,8 +78,9 @@ const SignInScreen = () => {
             or{' '}
             <Text
               style={styles.linkText}
-              //   onPress={() => navigation.navigate('CreateAccount')}
-              onPress={() => console.log('onpress create account')}>
+              onPress={() => navigation.navigate('CreateAccount')}
+              // onPress={() => console.log('onpress create account')}
+            >
               create account
             </Text>
           </Text>
