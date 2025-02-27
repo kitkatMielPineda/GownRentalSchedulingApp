@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import styles from './styles';
+import styles from '../styles/styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const CreateAccountScreen = () => {
@@ -67,7 +67,9 @@ const CreateAccountScreen = () => {
         </View>
 
         <View style={{paddingHorizontal: 10}}>
-          <TouchableOpacity style={styles.button} onPress={handleCreateAccount}>
+          <TouchableOpacity
+            style={[styles.button, styles.button.createAccount]}
+            onPress={handleCreateAccount}>
             <Text style={styles.buttonText}>Create Account</Text>
           </TouchableOpacity>
         </View>

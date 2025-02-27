@@ -26,12 +26,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
-    width: '100%',
-    padding: 15,
     backgroundColor: '#000',
     borderRadius: 8,
     alignItems: 'center',
     marginTop: 10,
+    home: {
+      width: '70%',
+      marginBottom: 10,
+      padding: 20,
+    },
+    sigin: {
+      width: '100%',
+      padding: 15,
+    },
+    createAccount: {
+      width: '100%',
+      padding: 15,
+    },
   },
   buttonText: {
     color: '#fff',
@@ -47,6 +58,15 @@ const styles = StyleSheet.create({
     color: '#000',
     marginTop: 15,
     fontSize: 16,
+  },
+  header: {
+    backgroundColor: 'white',
+    //alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 30,
+    width: Dimensions.get('window').width,
+    paddingHorizontal: 10,
+    marginTop: Dimensions.get('window').height * 0.1,
   },
 });
 

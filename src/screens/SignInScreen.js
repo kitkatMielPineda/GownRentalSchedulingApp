@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import styles from './styles';
+import styles from '../styles/styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const SignInScreen = () => {
@@ -27,16 +27,7 @@ const SignInScreen = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <View
-          style={{
-            backgroundColor: 'white',
-            //alignItems: 'center',
-            justifyContent: 'center',
-            marginVertical: 30,
-            width: Dimensions.get('window').width,
-            paddingHorizontal: 10,
-            marginTop: Dimensions.get('window').height * 0.1,
-          }}>
+        <View style={styles.header}>
           <Text style={styles.title}>Keith's Gown{'\n'}Scheduling App</Text>
         </View>
 
@@ -55,8 +46,10 @@ const SignInScreen = () => {
           />
         </View>
 
-        <View style={{paddingHorizontal: 10}}>
-          <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+        <View style={{paddingHorizontal: 10, alignItems: 'center'}}>
+          <TouchableOpacity
+            style={[styles.button, styles.button.sigin]}
+            onPress={handleSignIn}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
         </View>
@@ -82,6 +75,14 @@ const SignInScreen = () => {
               // onPress={() => console.log('onpress create account')}
             >
               create account
+            </Text>{' '}
+            or{' '}
+            <Text
+              style={styles.linkText}
+              onPress={() => navigation.navigate('Home')}
+              // onPress={() => console.log('onpress create account')}
+            >
+              home
             </Text>
           </Text>
         </View>
