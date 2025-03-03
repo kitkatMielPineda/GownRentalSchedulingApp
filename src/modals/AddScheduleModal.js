@@ -303,7 +303,7 @@ const AddScheduleModal = ({visible, onClose}) => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
-      <ShowDatePickerModal
+      {/* <ShowDatePickerModal
         visible={showDatePickerModal}
         selectedDate={
           rentalData[datePickerType] instanceof Date
@@ -313,6 +313,24 @@ const AddScheduleModal = ({visible, onClose}) => {
         mode="date"
         onClose={() => setShowDatePickerModal(false)}
         onDateChange={handleDateChange}
+      /> */}
+
+      <ShowDatePickerModal
+        visible={showDatePickerModal}
+        selectedDate={
+          rentalData[datePickerType] instanceof Date
+            ? rentalData[datePickerType]
+            : new Date()
+        }
+        mode="date"
+        onClose={() => setShowDatePickerModal(false)}
+        onDateChange={selectedDate => {
+          setRentalData(prevState => ({
+            ...prevState,
+            [datePickerType]: selectedDate, // Store as Date object
+          }));
+          setShowDatePickerModal(false);
+        }}
       />
 
       {/* Time Selection Modal (For Selecting Time Slots) */}

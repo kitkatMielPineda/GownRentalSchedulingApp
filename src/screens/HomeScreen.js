@@ -34,7 +34,11 @@ const HomeScreen = () => {
             onPress={() => setModalVisible(true)}>
             <Text style={styles.buttonText}>Add Schedule</Text>
           </TouchableOpacity>
-          <HomeButton title="Upcoming Rentals" screen="UpcomingRentals" />
+          <TouchableOpacity
+            style={[styles.button, styles.button.home]}
+            onPress={() => navigation.navigate('UpcomingRentals')}>
+            <Text style={styles.buttonText}>Upcoming Rentals</Text>
+          </TouchableOpacity>
           <HomeButton
             title="Upcoming Appointments"
             screen="UpcomingAppointments"
