@@ -137,6 +137,7 @@ import SignInScreen from './src/screens/SignInScreen'; // Adjust path if needed
 import CreateAccountScreen from './src/screens/CreateAccountScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import {ScheduleProvider} from './src/context/ScheduleContext';
+import UpcomingRentalsScreen from './src/screens/UpcomingRentalsScreen';
 
 const Stack = createStackNavigator();
 
@@ -158,6 +159,11 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="UpcomingRentals"
+            component={UpcomingRentalsScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

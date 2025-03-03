@@ -74,6 +74,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     paddingHorizontal: 10,
     marginTop: Dimensions.get('window').height * 0.1,
+    main: {
+      marginTop: Dimensions.get('window').height * 0.05,
+    },
   },
   modalContainer: {
     //justifyContent: 'center',
@@ -107,6 +110,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
   },
+  modalBodyColumn: {
+    flexDirection: 'column',
+    // justifyContent: 'flex-start',
+    //flexWrap: 'wrap',
+    paddingVertical: 50,
+  },
   inputText: {
     fontSize: 18,
     padding: 5,
@@ -132,6 +141,7 @@ const styles = StyleSheet.create({
       width: 120,
       height: 35,
     },
+    long: {},
   },
   datePickerModal: {
     alignItems: 'center',
@@ -142,6 +152,33 @@ const styles = StyleSheet.create({
     padding: 20,
     borderWidth: 5,
     borderColor: '#000',
+  },
+  listItem: {
+    paddingVertical: 20,
+    borderBottomWidth: 3,
+    borderBottomColor: '#000',
+    width: Dimensions.get('window').width * 0.9,
+  },
+  listItemText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  noDataText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 10,
+  },
+  backButton: {
+    position: 'absolute',
+    bottom: 20,
+    padding: 10,
+  },
+  backButtonText: {
+    color: '#000',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

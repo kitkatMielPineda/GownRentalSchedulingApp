@@ -19,20 +19,24 @@ export const ScheduleProvider = ({children}) => {
     );
   };
 
-  // Function to update a schedule
-  const updateSchedule = (scheduleId, updatedSchedule) => {
+  // ✅ Function to update an existing schedule
+  const updateSchedule = updatedSchedule => {
     setSchedules(prevSchedules =>
       prevSchedules.map(schedule =>
-        schedule.id === scheduleId
-          ? {...schedule, ...updatedSchedule}
-          : schedule,
+        schedule.id === updatedSchedule.id ? updatedSchedule : schedule,
       ),
+    );
+  };
+
+  const cancelSchedule = rentalId => {
+    setSchedules(prevSchedules =>
+      prevSchedules.filter(sch => sch.id !== rentalId),
     );
   };
 
   return (
     <ScheduleContext.Provider
-      value={{schedules, addSchedule, removeSchedule, updateSchedule}}>
+      value={{schedules, addSchedule, updateSchedule, cancelSchedule}}>
       {children}
     </ScheduleContext.Provider>
   );
