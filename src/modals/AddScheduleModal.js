@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -11,10 +11,9 @@ import {
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import styles from '../styles/styles';
 import {Picker} from '@react-native-picker/picker';
-import {ScrollView} from 'react-native-gesture-handler';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import ShowDatePickerModal from './ShowDatePickerModal';
 import TimeSelectionModal from './TimeSelectionModal';
+import {ScheduleContext} from '../context/ScheduleContext';
 
 const AddScheduleModal = ({visible, onClose}) => {
   // Dropdown state
@@ -42,6 +41,7 @@ const AddScheduleModal = ({visible, onClose}) => {
   const [datePickerType, setDatePickerType] = useState(null); // 'pickupDate' or 'returnDate'
   const [showDatePickerModal, setShowDatePickerModal] = useState(false);
   const [showTimeModal, setShowTimeModal] = useState(false);
+  const {addSchedule} = useContext(ScheduleContext);
 
   const handleDateChange = (event, selectedDate) => {
     if (!selectedDate) {
@@ -77,6 +77,9 @@ const AddScheduleModal = ({visible, onClose}) => {
       Alert.alert('Error', 'Please select a schedule type');
       return;
     }
+
+    let newSchedule = {};
+
     if (scheduleType === 'Rental') {
       const {
         name,
@@ -87,6 +90,7 @@ const AddScheduleModal = ({visible, onClose}) => {
         downpayment,
         totalPrice,
       } = rentalData;
+
       if (
         !name ||
         !contact ||
@@ -99,26 +103,34 @@ const AddScheduleModal = ({visible, onClose}) => {
         Alert.alert('Error', 'Please fill in all rental details');
         return;
       }
-      const newSchedule = {
+
+      newSchedule = {
+        id: Date.now().toString(), // Unique ID for list management
         type: 'Rental',
         ...rentalData,
         balance: totalPrice - downpayment,
       };
     } else {
       const {date, time, name, contact} = appointmentData;
+
       if (!date || !time || !name || !contact) {
         Alert.alert('Error', 'Please fill in all appointment details');
         return;
       }
-      const newSchedule = {
+
+      newSchedule = {
+        id: Date.now().toString(), // Unique ID
         type: 'Appointment',
         ...appointmentData,
       };
     }
-    Alert.alert('Success', 'Schedule Added Successfully');
-    onClose();
-  };
 
+    // Save schedule in context
+    addSchedule(newSchedule);
+
+    Alert.alert('Success', 'Schedule Added Successfully');
+    onClose(); // Close modal
+  };
   // Render Rental Form
   const renderRentalForm = () => (
     <>
