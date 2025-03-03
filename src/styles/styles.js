@@ -5,8 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    //justifyContent: 'center',
-    //padding: 20,
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
@@ -14,7 +12,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     color: 'black',
-    //marginVertical: 20,
   },
   input: {
     width: '100%',
@@ -29,7 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     borderRadius: 8,
     alignItems: 'center',
-    // marginTop: 10,
     home: {
       width: '70%',
       marginBottom: 10,
@@ -68,7 +64,6 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: 'white',
-    //alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 30,
     width: Dimensions.get('window').width,
@@ -79,7 +74,6 @@ const styles = StyleSheet.create({
     },
   },
   modalContainer: {
-    //justifyContent: 'center',
     alignItems: 'center',
     height: '90%',
     width: '80%',
@@ -100,7 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   modalBody: {
-    //backgroundColor: 'pink',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -112,8 +105,6 @@ const styles = StyleSheet.create({
   },
   modalBodyColumn: {
     flexDirection: 'column',
-    // justifyContent: 'flex-start',
-    //flexWrap: 'wrap',
     paddingVertical: 50,
   },
   inputText: {
@@ -158,6 +149,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderBottomColor: '#000',
     width: Dimensions.get('window').width * 0.9,
+    backgroundColor: '#fff',
   },
   listItemText: {
     fontSize: 16,
@@ -179,6 +171,34 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  swipeButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 80,
+    padding: 15,
+  },
+  editButton: {
+    backgroundColor: '#3498db',
+    width: 100,
+    height: '100%',
+  },
+  deleteButton: {
+    backgroundColor: '#e74c3c',
+    width: 100,
+    height: '100%',
+  },
+  swipeButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  hiddenButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    flex: 1,
+    borderRadius: 5,
   },
 });
 
