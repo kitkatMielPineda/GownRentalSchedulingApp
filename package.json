@@ -16,10 +16,12 @@
     "@react-navigation/stack": "^7.1.1",
     "react": "19.0.0",
     "react-native": "0.78.0",
+    "react-native-calendars": "^1.1310.0",
     "react-native-gesture-handler": "^2.24.0",
     "react-native-reanimated": "^4.0.0-nightly-20250223-fa3aa31e6",
     "react-native-safe-area-context": "^5.2.0",
     "react-native-screens": "^4.9.0",
+    "react-native-svg": "^15.11.2",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-vector-icons": "^10.2.0"
   },

@@ -48,7 +48,11 @@ const HomeScreen = () => {
             title="Upcoming Appointments"
             screen="UpcomingAppointments"
           />
-          <HomeButton title="Calendar" screen="Calendar" />
+          <TouchableOpacity
+            style={[styles.button, styles.button.home]}
+            onPress={() => navigation.navigate('Calendar')}>
+            <Text style={styles.buttonText}>Calendar</Text>
+          </TouchableOpacity>
           <HomeButton title="Unavailable Items" screen="UnavailableItems" />
           <HomeButton title="Notifications" screen="Notifications" />
         </View>
