@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -13,10 +13,14 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import styles from '../styles/styles';
 import HomeButton from '../components/Homebutton';
 import AddScheduleModal from '../modals/AddScheduleModal';
+import {ScheduleContext} from '../context/ScheduleContext';
+import QuickSchedulePreviewModal from '../modals/QuickSchedulePreviewModal';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+  const {schedules} = useContext(ScheduleContext);
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -25,10 +29,11 @@ const HomeScreen = () => {
           <Text style={styles.title}>Home</Text>
         </View>
         <View style={{paddingHorizontal: 10, alignItems: 'center'}}>
-          <HomeButton
-            title="Quick Schedule Preview"
-            screen="QuickSchedulePreview"
-          />
+          <TouchableOpacity
+            style={[styles.button, styles.button.home]}
+            onPress={() => setIsPreviewVisible(true)}>
+            <Text style={styles.buttonText}>Quick Schedule Preview</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, styles.button.home]}
             onPress={() => setModalVisible(true)}>
@@ -57,6 +62,11 @@ const HomeScreen = () => {
         <AddScheduleModal
           visible={modalVisible}
           onClose={() => setModalVisible(false)}
+        />
+        <QuickSchedulePreviewModal
+          visible={isPreviewVisible}
+          onClose={() => setIsPreviewVisible(false)}
+          schedules={schedules}
         />
       </SafeAreaView>
     </View>

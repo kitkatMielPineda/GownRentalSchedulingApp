@@ -15,29 +15,48 @@ const UpcomingAppointmentsScreen = () => {
   const navigation = useNavigation();
 
   const isFutureAppointment = (date, time) => {
-    const now = new Date(); // Get the current date and time
-    const appointmentDateTime = new Date(date);
+    const now = new Date(); // Current date and time
+    const appointmentDateTime = new Date(date); // Appointment date
 
-    // Parse the time from the appointment (Assumes time is stored as "HH:mm AM/PM")
-    const [timePart, modifier] = time.split(' ');
-    let [hours, minutes] = timePart.split(':').map(Number);
+    // Reset seconds and milliseconds for accurate comparison
+    now.setSeconds(0, 0, 0);
+    appointmentDateTime.setSeconds(0, 0, 0);
 
-    // Convert 12-hour format to 24-hour format
-    if (modifier === 'PM' && hours !== 12) hours += 12;
-    if (modifier === 'AM' && hours === 12) hours = 0;
+    if (time) {
+      const timeParts = time.match(/(\d+):(\d+)\s?(AM|PM)/i); // Extract time components
+      if (timeParts) {
+        let hours = parseInt(timeParts[1], 10);
+        let minutes = parseInt(timeParts[2], 10);
+        const modifier = timeParts[3].toUpperCase(); // AM/PM
 
-    // Set the appointment time
-    appointmentDateTime.setHours(hours, minutes, 0, 0);
+        // Convert 12-hour format to 24-hour format
+        if (modifier === 'PM' && hours !== 12) {
+          hours += 12;
+        }
+        if (modifier === 'AM' && hours === 12) {
+          hours = 0;
+        }
 
-    // Compare with the current date and time
-    return appointmentDateTime >= now;
+        // ✅ Properly set time on the appointment date
+        appointmentDateTime.setHours(hours, minutes, 0, 0);
+      }
+    }
+
+    console.log('Current Time:', now.toLocaleString());
+    console.log(
+      'Parsed Appointment DateTime:',
+      appointmentDateTime.toLocaleString(),
+    );
+
+    // ✅ Fix: Ensure today's appointments are included if the time is in the future
+    return appointmentDateTime.getTime() >= now.getTime();
   };
 
   const upcomingAppointments = schedules
     .filter(
       schedule =>
         schedule.type === 'Appointment' &&
-        isFutureAppointment(schedule.date, schedule.time),
+        isFutureAppointment(schedule.date, schedule.time), // ✅ Fix ensures today’s future times are included
     )
     .sort(
       (a, b) =>
