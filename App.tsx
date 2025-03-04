@@ -140,6 +140,7 @@ import {ScheduleProvider} from './src/context/ScheduleContext';
 import UpcomingRentalsScreen from './src/screens/UpcomingRentalsScreen';
 import UpcomingAppointmentsScreen from './src/screens/UpcomingAppointmentsScreen';
 import CalendarScreen from './src/screens/CalendarScreen';
+import UnavailableItemsScreen from './src/screens/UnavailableItemsScreen';
 
 const Stack = createStackNavigator();
 
@@ -176,6 +177,11 @@ export default function App() {
           <Stack.Screen
             name="Calendar"
             component={CalendarScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="UnavailableItems"
+            component={UnavailableItemsScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

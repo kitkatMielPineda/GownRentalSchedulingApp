@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import {SearchBar} from 'react-native-screens';
 
 const styles = StyleSheet.create({
   container: {
@@ -207,6 +208,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
     borderRadius: 5,
+  },
+  searchBar: {
+    width: Dimensions.get('screen').width * 0.9,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    marginBottom: 30,
+    padding: 10,
+    borderColor: '#000',
   },
 });
 
