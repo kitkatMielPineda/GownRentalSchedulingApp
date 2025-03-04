@@ -148,13 +148,21 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderBottomWidth: 3,
     borderBottomColor: '#000',
-    width: Dimensions.get('window').width * 0.9,
+    width: Dimensions.get('screen').width * 0.9,
     backgroundColor: '#fff',
+  },
+  listItemModal: {
+    width: Dimensions.get('screen').width * 0.65,
+    backgroundColor: '#fff',
+    paddingVertical: 20,
+    borderBottomWidth: 3,
+    borderBottomColor: '#000',
   },
   listItemText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: 'black',
+    lineHeight: 25,
   },
   noDataText: {
     fontSize: 16,

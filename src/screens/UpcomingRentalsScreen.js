@@ -13,13 +13,14 @@ const UpcomingRentalsScreen = () => {
   const navigation = useNavigation();
 
   const isFutureRental = pickupDate => {
-    const now = new Date(); // Get current date
+    const now = new Date();
     const rentalPickupDate = new Date(pickupDate);
 
+    // Reset time to midnight to compare only the date
     now.setHours(0, 0, 0, 0);
     rentalPickupDate.setHours(0, 0, 0, 0);
 
-    return rentalPickupDate >= now;
+    return rentalPickupDate.getTime() >= now.getTime(); // Ensures today's rentals still display
   };
 
   const upcomingRentals = schedules
