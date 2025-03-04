@@ -138,6 +138,7 @@ import CreateAccountScreen from './src/screens/CreateAccountScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import {ScheduleProvider} from './src/context/ScheduleContext';
 import UpcomingRentalsScreen from './src/screens/UpcomingRentalsScreen';
+import UpcomingAppointmentsScreen from './src/screens/UpcomingAppointmentsScreen';
 
 const Stack = createStackNavigator();
 
@@ -164,6 +165,11 @@ export default function App() {
           <Stack.Screen
             name="UpcomingRentals"
             component={UpcomingRentalsScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="UpcomingAppointments"
+            component={UpcomingAppointmentsScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

@@ -12,22 +12,31 @@ const UpcomingRentalsScreen = () => {
   const [selectedRental, setSelectedRental] = useState(null);
   const navigation = useNavigation();
 
+  const isFutureRental = pickupDate => {
+    const now = new Date(); // Get current date
+    const rentalPickupDate = new Date(pickupDate);
+
+    now.setHours(0, 0, 0, 0);
+    rentalPickupDate.setHours(0, 0, 0, 0);
+
+    return rentalPickupDate >= now;
+  };
+
   const upcomingRentals = schedules
     .filter(
       schedule =>
-        schedule.type === 'Rental' &&
-        new Date(schedule.pickupDate) >= new Date(),
+        schedule.type === 'Rental' && isFutureRental(schedule.pickupDate),
     )
     .sort((a, b) => new Date(a.pickupDate) - new Date(b.pickupDate));
 
   const handleUpdateRental = updatedRental => {
-    updateSchedule(updatedRental); // ✅ Update context data
-    setSelectedRental(updatedRental); // ✅ Refresh modal data
+    updateSchedule(updatedRental);
+    setSelectedRental(updatedRental);
   };
 
   const handleCancelRental = rentalId => {
-    cancelSchedule(rentalId); // Call the function in ScheduleContext
-    setSelectedRental(null); // Close modal
+    cancelSchedule(rentalId);
+    setSelectedRental(null);
   };
 
   return (

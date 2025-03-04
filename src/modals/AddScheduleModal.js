@@ -303,32 +303,32 @@ const AddScheduleModal = ({visible, onClose}) => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
-      {/* <ShowDatePickerModal
-        visible={showDatePickerModal}
-        selectedDate={
-          rentalData[datePickerType] instanceof Date
-            ? rentalData[datePickerType]
-            : new Date()
-        }
-        mode="date"
-        onClose={() => setShowDatePickerModal(false)}
-        onDateChange={handleDateChange}
-      /> */}
 
       <ShowDatePickerModal
         visible={showDatePickerModal}
         selectedDate={
-          rentalData[datePickerType] instanceof Date
+          scheduleType === 'Appointment'
+            ? appointmentData.date instanceof Date
+              ? appointmentData.date
+              : new Date()
+            : rentalData[datePickerType] instanceof Date
             ? rentalData[datePickerType]
             : new Date()
         }
         mode="date"
         onClose={() => setShowDatePickerModal(false)}
         onDateChange={selectedDate => {
-          setRentalData(prevState => ({
-            ...prevState,
-            [datePickerType]: selectedDate, // Store as Date object
-          }));
+          if (scheduleType === 'Appointment') {
+            setAppointmentData(prevState => ({
+              ...prevState,
+              date: selectedDate, // ✅ Fix: Now updates appointment date properly
+            }));
+          } else {
+            setRentalData(prevState => ({
+              ...prevState,
+              [datePickerType]: selectedDate, // ✅ Still works for rental
+            }));
+          }
           setShowDatePickerModal(false);
         }}
       />
